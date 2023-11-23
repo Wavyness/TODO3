@@ -1,5 +1,5 @@
 //
-//  ListItemView.swift
+//  TodoListView.swift
 //  TODO3
 //
 //  Created by Dimitri Liauw on 22/11/2023.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ListItemView: View {
+struct TodoListView: View {
     @State var id: UUID?
     @State var name: String
     @State var isTicked: Bool
-//    var onDelete: () -> Void
+    var onDelete: (UUID?) async throws -> Void
     
     func updateTodo(todo: Todo) async throws {
         let urlString = Constants.baseURL + Endpoints.todos
@@ -48,8 +48,8 @@ struct ListItemView: View {
         .swipeActions {
             Button {
                 print("delete")
-                withAnimation {
-//                    onDelete()
+                Task {
+                    try await onDelete(id)
                 }
             } label: {
                 Image(systemName: "trash")
@@ -62,13 +62,14 @@ struct ListItemView: View {
 
 #Preview {
     NavigationView {
-//        List {
-//            ListItemView(name: "test", isTicked: false) {
-//                print("nothing")
-//            }
-//            ListItemView(name: "test2", isTicked: false) {
-//                print("nothing")
-//            }
-//        }
+        List {
+            TodoListView(id: UUID(), name: "Visit booking.com", isTicked: false, onDelete: mockFunction)
+            TodoListView(id: UUID(), name: "Make to-do app", isTicked: true, onDelete: mockFunction)
+        }
     }
+    .navigationTitle("Todos")
+}
+
+func mockFunction(id: UUID?) async throws {
+    print("Nothing here")
 }

@@ -1,5 +1,5 @@
 //
-//  TodoListViewModel.swift
+//  TodoViewModel.swift
 //  TODO3
 //
 //  Created by Dimitri Liauw on 23/11/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class TodoListViewModel: ObservableObject {
+class TodoViewModel: ObservableObject {
     @Published var todos = [Todo]()
     
     func fetchTodos() async throws {

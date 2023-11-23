@@ -1,5 +1,5 @@
 //
-//  AdditionView.swift
+//  SubmissionView.swift
 //  TODO3
 //
 //  Created by Dimitri Liauw on 23/11/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AdditionView: View {
+struct SubmissionView: View {
     @State var name = ""
     var onSubmit: (String) async throws -> ()
     @Environment(\.presentationMode) var presentationMode
@@ -71,7 +71,7 @@ struct AdditionView: View {
 }
 
 #Preview {
-    AdditionView(onSubmit: { text in
+    SubmissionView(onSubmit: { text in
         print("Submitted name: \(text)")
     })
 }
