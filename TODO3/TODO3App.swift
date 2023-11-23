@@ -11,7 +11,7 @@ import SwiftUI
 struct TODO3App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreenView()
         }
     }
 }
