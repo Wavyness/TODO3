@@ -13,10 +13,10 @@
 		3B406C772B0E7A6D00119926 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B406C762B0E7A6D00119926 /* Preview Assets.xcassets */; };
 		3B406C812B0E7F0400119926 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C802B0E7F0400119926 /* SplashScreenView.swift */; };
 		3B406C832B0E9A2100119926 /* CustomAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C822B0E9A2100119926 /* CustomAddButton.swift */; };
-		3B406C852B0EAAA300119926 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C842B0EAAA300119926 /* ListItemView.swift */; };
-		3B406C872B0EC2BF00119926 /* AdditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C862B0EC2BF00119926 /* AdditionView.swift */; };
+		3B406C852B0EAAA300119926 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C842B0EAAA300119926 /* TodoListView.swift */; };
+		3B406C872B0EC2BF00119926 /* SubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C862B0EC2BF00119926 /* SubmissionView.swift */; };
 		3B406C8A2B0EF2C400119926 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C892B0EF2C400119926 /* Todo.swift */; };
-		3B406C8C2B0EF45500119926 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C8B2B0EF45500119926 /* TodoListViewModel.swift */; };
+		3B406C8C2B0EF45500119926 /* TodoModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C8B2B0EF45500119926 /* TodoModelView.swift */; };
 		3B406C8F2B0EF5C600119926 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C8E2B0EF5C600119926 /* HttpClient.swift */; };
 		3B406C912B0EF8A400119926 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B406C902B0EF8A400119926 /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -29,10 +29,10 @@
 		3B406C762B0E7A6D00119926 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3B406C802B0E7F0400119926 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		3B406C822B0E9A2100119926 /* CustomAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAddButton.swift; sourceTree = "<group>"; };
-		3B406C842B0EAAA300119926 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
-		3B406C862B0EC2BF00119926 /* AdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionView.swift; sourceTree = "<group>"; };
+		3B406C842B0EAAA300119926 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		3B406C862B0EC2BF00119926 /* SubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionView.swift; sourceTree = "<group>"; };
 		3B406C892B0EF2C400119926 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		3B406C8B2B0EF45500119926 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
+		3B406C8B2B0EF45500119926 /* TodoModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModelView.swift; sourceTree = "<group>"; };
 		3B406C8E2B0EF5C600119926 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		3B406C902B0EF8A400119926 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,9 +67,10 @@
 		3B406C6E2B0E7A6C00119926 /* TODO3 */ = {
 			isa = PBXGroup;
 			children = (
-				3B406C8D2B0EF5B300119926 /* Utilities */,
-				3B406C7D2B0E7EDE00119926 /* Screens */,
+				3B406C7D2B0E7EDE00119926 /* Views */,
 				3B406C882B0EF28E00119926 /* Models */,
+				3B68BD0F2B0F5C47002DC6D0 /* ModelViews */,
+				3B406C8D2B0EF5B300119926 /* Utilities */,
 				3B406C6F2B0E7A6C00119926 /* TODO3App.swift */,
 				3B406C732B0E7A6D00119926 /* Assets.xcassets */,
 				3B406C752B0E7A6D00119926 /* Preview Content */,
@@ -85,23 +86,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3B406C7D2B0E7EDE00119926 /* Screens */ = {
+		3B406C7D2B0E7EDE00119926 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3B406C712B0E7A6C00119926 /* ContentView.swift */,
-				3B406C8B2B0EF45500119926 /* TodoListViewModel.swift */,
-				3B406C842B0EAAA300119926 /* ListItemView.swift */,
 				3B406C802B0E7F0400119926 /* SplashScreenView.swift */,
-				3B406C822B0E9A2100119926 /* CustomAddButton.swift */,
-				3B406C862B0EC2BF00119926 /* AdditionView.swift */,
+				3B406C712B0E7A6C00119926 /* ContentView.swift */,
+				3B406C862B0EC2BF00119926 /* SubmissionView.swift */,
+				3B406C842B0EAAA300119926 /* TodoListView.swift */,
 			);
-			path = Screens;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3B406C882B0EF28E00119926 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3B406C892B0EF2C400119926 /* Todo.swift */,
+				3B406C822B0E9A2100119926 /* CustomAddButton.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -113,6 +113,14 @@
 				3B406C902B0EF8A400119926 /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3B68BD0F2B0F5C47002DC6D0 /* ModelViews */ = {
+			isa = PBXGroup;
+			children = (
+				3B406C8B2B0EF45500119926 /* TodoModelView.swift */,
+			);
+			path = ModelViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,10 +193,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B406C852B0EAAA300119926 /* ListItemView.swift in Sources */,
+				3B406C852B0EAAA300119926 /* TodoListView.swift in Sources */,
 				3B406C832B0E9A2100119926 /* CustomAddButton.swift in Sources */,
-				3B406C8C2B0EF45500119926 /* TodoListViewModel.swift in Sources */,
-				3B406C872B0EC2BF00119926 /* AdditionView.swift in Sources */,
+				3B406C8C2B0EF45500119926 /* TodoModelView.swift in Sources */,
+				3B406C872B0EC2BF00119926 /* SubmissionView.swift in Sources */,
 				3B406C722B0E7A6C00119926 /* ContentView.swift in Sources */,
 				3B406C912B0EF8A400119926 /* Constants.swift in Sources */,
 				3B406C702B0E7A6C00119926 /* TODO3App.swift in Sources */,

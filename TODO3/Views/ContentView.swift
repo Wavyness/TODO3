@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var todoList = TodoListViewModel()
-    
+    @StateObject var todoList = TodoViewModel()
     @State var isShowingSheet: Bool = false
     
+    // MARK: - FUNCTIONS
     func addItem(name: String) async throws {
         let urlString = Constants.baseURL + Endpoints.todos
         guard let url = URL(string: urlString) else {
@@ -57,7 +57,7 @@ struct ContentView: View {
             .ignoresSafeArea()
             
             VStack {
-                // MARK: HEADER
+                // MARK: - HEADER
                 Text("Todo's")
                     .foregroundColor(.white)
                     .font(.system(size: 50, design: .rounded))
@@ -65,8 +65,7 @@ struct ContentView: View {
                     .padding(.top, 30)
                     .shadow(radius: 2, x: 3, y: 5)
                 
-                // MARK: MAIN
-                
+                // MARK: - MAIN
                 if todoList.todos.isEmpty {
                     VStack {
                         Spacer()
@@ -90,7 +89,7 @@ struct ContentView: View {
                 } else {
                     List {
                         ForEach(todoList.todos) { todo in
-                            ListItemView(
+                            TodoListView(
                                 id: todo.id,
                                 name: todo.name,
                                 isTicked: todo.isTicked,
@@ -101,27 +100,29 @@ struct ContentView: View {
                     .scrollContentBackground(.hidden)
                     .padding(.horizontal, 30)
                 }
-                
                 Spacer()
                 
-                // MARK: BOTTOM
+                // MARK: - FOOTER
                 HStack {
                     Spacer()
                     Button {
-                        print("add")
+                        print("Add button is pressed")
                         isShowingSheet.toggle()
                     } label: {
                         CustomAddButton()
                     }
-                    .sheet(isPresented: $isShowingSheet, onDismiss: {
-                        Task {
-                            do {
-                                try await todoList.fetchTodos()
-                            } catch {
-                                print("Error \(error)")
+                    .sheet(
+                        isPresented: $isShowingSheet,
+                        onDismiss: {
+                            Task {
+                                do {
+                                    try await todoList.fetchTodos()
+                                } catch {
+                                    print("Error \(error)")
+                                }
                             }
                         }
-                    }) {
+                    ) {
                         SubmissionView(onSubmit: addItem)
                             .presentationDragIndicator(.visible)
                     }

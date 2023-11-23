@@ -26,7 +26,7 @@ struct TodoListView: View {
     var body: some View {
         HStack {
             Button {
-                print("check/uncheck")
+                print("Todo is ticked/unticked")
                 withAnimation() {
                     isTicked.toggle()
                 }
@@ -43,20 +43,21 @@ struct TodoListView: View {
                 .padding(.vertical, 8)
                 .font(.system(size: 20, weight: .bold))
                 .strikethrough(isTicked, color: .black)
-        }
-        .foregroundColor(isTicked ? .black.opacity(0.3) : .black)
-        .swipeActions {
-            Button {
-                print("delete")
-                Task {
-                    try await onDelete(id)
-                }
-            } label: {
-                Image(systemName: "trash")
             }
-            .tint(.red)
-        }
-        .buttonStyle(.borderless) // assures that button works correctly (before you could press anywhere)
+            .foregroundColor(isTicked ? .black.opacity(0.3) : .black)
+            .swipeActions {
+                Button {
+                    print("Todo: \(name) is deleted")
+                    Task {
+                        try await onDelete(id)
+                    }
+                } label: {
+                    Image(systemName: "trash")
+                }
+                .tint(.red)
+            }
+            .buttonStyle(.borderless)
+        // assures that button works correctly (before you could press anywhere)
     }
 }
 

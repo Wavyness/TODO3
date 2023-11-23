@@ -35,10 +35,9 @@ struct SubmissionView: View {
                     .font(.system(size: 20, weight: .bold))
                     .padding(30)
                     .frame(maxWidth: 330)
-                // You can still add empty todo's - need to fix this
                 
                 Button {
-                    print("submit")
+                    print("Submit")
                     Task {
                         try await onSubmit(name)
                     }
