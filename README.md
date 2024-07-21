@@ -6,7 +6,7 @@ TODO3 is made to proof certain capabilities:
 - Building a DB with API endpoints
 - Building and connecting an App with a DB
 
-## Showcase
+## Showcase 📸
 ![todo3-mockups](https://github.com/user-attachments/assets/2cf0729c-c00c-48f8-8e9c-894b6c9339e4)
 
 ## Dependencies 🔗
@@ -17,7 +17,7 @@ This App can only be ran on MacOS or iOS. Furthermore you need:
 - TODO3-API [[here](https://github.com/Wavyness/TODO3-API)]
 - Ngrok (optional) [[here](https://ngrok.com)]
 
-## Install Guide 📜
+## Install Guide 📖
 1. Install XCode and an iOS Simulator of choice
 2. Install Docker and have it active.
 3. Clone the TODO3 and TODO3-API repository on your machine
