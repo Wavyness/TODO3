@@ -45,6 +45,8 @@ struct TodoListView: View {
                 Image(systemName: isTicked ? "checkmark.circle.fill" : "circle")
                     .font(.system(size: 22, weight: .bold))
             }
+            .buttonStyle(.borderless)
+            // assures that button works correctly (before you could press anywhere)
             
             Text(name)
                 .padding(.vertical, 8)
@@ -94,8 +96,6 @@ struct TodoListView: View {
             ) {
                 SubmissionView(oldName: name, onSubmit: editName, isNew: false)
             }
-            .buttonStyle(.borderless)
-            // assures that button works correctly (before you could press anywhere)
     }
 }
 
