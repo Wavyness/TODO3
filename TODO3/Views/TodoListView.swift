@@ -12,6 +12,7 @@ struct TodoListView: View {
     @State var name: String
     @State var isTicked: Bool
     var onDelete: (UUID?) async throws -> Void
+    @State var isShowingSheet = false
     
     func updateTodo(todo: Todo) async throws {
         let urlString = Constants.baseURL + Endpoints.todos
@@ -21,6 +22,12 @@ struct TodoListView: View {
         
         let todoUpdate = todo
         try await HttpClient.shared.sendData(to: url, object: todoUpdate, httpMethod: HttpMethods.PUT.rawValue)
+    }
+    
+    func editName(newName: String) async throws {
+        let todo = Todo(id: id, name: newName, isTicked: isTicked)
+        try await updateTodo(todo: todo)
+        name = newName
     }
     
     var body: some View {
@@ -45,7 +52,7 @@ struct TodoListView: View {
                 .strikethrough(isTicked, color: .black)
             }
             .foregroundColor(isTicked ? .black.opacity(0.3) : .black)
-            .swipeActions {
+            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                 Button {
                     print("Todo: \(name) is deleted")
                     Task {
@@ -55,9 +62,40 @@ struct TodoListView: View {
                     Image(systemName: "trash")
                 }
                 .tint(.red)
+                
+                Button {
+                    print("change name")
+                    isShowingSheet.toggle()
+                } label: {
+                    Image(systemName: "pencil.tip")
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundColor(.black)
+                }
+                .tint(.gray)
+            }
+            .swipeActions(edge: .leading) {
+                Button {
+                    print("Todo is ticked/unticked")
+                    withAnimation() {
+                        isTicked.toggle()
+                    }
+                    let updatedTodo = Todo(id: id, name: name, isTicked: isTicked)
+                    Task {
+                        try await updateTodo(todo: updatedTodo)
+                    }
+                } label: {
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 22, weight: .bold))
+                }
+                .tint(.green)
+            }
+            .sheet(
+                isPresented: $isShowingSheet
+            ) {
+                SubmissionView(oldName: name, onSubmit: editName, isNew: false)
             }
             .buttonStyle(.borderless)
-        // assures that button works correctly (before you could press anywhere)
+            // assures that button works correctly (before you could press anywhere)
     }
 }
 
